@@ -12,6 +12,9 @@
                                 <VBtn class="text-subtitle-2"   density="compact"  color="primary" :variant="(route.name == 'Home')? 'tonal':'text'">Home</VBtn>
                             </RouterLink>
 
+                            <RouterLink class="route" to="/control">
+                                <VBtn class="text-subtitle-2" density="compact" color="primary" :variant="(route.name == 'Control')? 'tonal':'text'">Control</VBtn>
+                            </RouterLink>
                             <!-- Add Links Below -->
                                                                          
 
