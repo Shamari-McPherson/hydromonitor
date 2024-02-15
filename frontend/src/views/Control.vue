@@ -68,7 +68,7 @@ onMounted(()=>{
     setTimeout( ()=>{
     // Subscribe to each topic
     Mqtt.subscribe("620152241");
-    Mqtt.subscribe("620152241_pub");
+    Mqtt.subscribe("620152241_sub");
     },3000);
 });
 

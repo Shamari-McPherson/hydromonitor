@@ -36,7 +36,8 @@ class MQTT:
         # 3. REGISTER CALLBACK FUNCTION(S) FOR EACH TOPIC USING THE self.client.message_callback_add("topic",self.function) FUNCTION
         # WHICH TAKES A TOPIC AND THE NAME OF THE CALLBACK FUNCTION YOU HAVE CREATED FOR THIS SPECIFIC TOPIC
         self.client.message_callback_add("620152241", self.update)
-        # self.client.message_callback_add("620152241_sub", self.toggle)
+        self.client.message_callback_add("620152241_sub", self.update)
+        self.client.message_callback_add("620152241_pub", self.update)
        
          
 
