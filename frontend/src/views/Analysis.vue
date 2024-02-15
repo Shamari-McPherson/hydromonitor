@@ -1,141 +1,113 @@
-<template>
-    <v-container class="vg-surface" fluid align=" center" color=" surface">
-      <v-row class="">
-        <v-col>
-          <v-sheet class="pa-2">
-            <p>Enter date range for Analysis</p>
-          </v-sheet>
-          <v-divider></v-divider>
-          <br />
-          <v-text-field
-          label="Start date" type="Date"  solo-inverted class="mr-5" max-width="300px" flat v-model="start"
-          ></v-text-field>
-          <v-text-field
-            v-model="end"
-            label="End date"
-            type="Date"
-            dense
-            solo-inverted
-            class="mr-5"
-            :style="{ maxWidth: '300px' }"
-            flat
-          ></v-text-field>
-          <br />
-          <v-btn
-            text="Analyze"
-            @click="
-              updateLineCharts();
-              updateCards();
-              updateHistogramCharts();
-              updateScatter();
-            "
-            color="primary"
-            variant="tonal"
-          ></v-btn>
-        </v-col>
-        <v-col cols="3" align="center">
-          <v-card
-            title="Temperature"
-            width="250"
-            variant="outlined"
-            color="primary"
-            density="compact"
-            rounded="lg"
-          >
-            <v-card-item class="mb-n5">
-              <v-chip-group
-                class="d-flex flex-row justify-center"
-                color="primaryContainer"
-                variant="flat"
-              >
-                <v-tooltip text="Min" location="start">
-                  <template v-slot:activator="{ props }">
-                    <v-chip v-bind="props">{{ temperature.min }}</v-chip>
-                  </template>
-                </v-tooltip>
-  
-                <v-tooltip text="Range" location="top">
-                  <template v-slot:activator="{ props }">
-                    <v-chip v-bind="props">{{ temperature.range }}</v-chip>
-                  </template>
-                </v-tooltip>
-                <v-tooltip text="Max" location="end">
-                  <template v-slot:activator="{ props }">
-                    <v-chip v-bind="props">{{ temperature.max }}</v-chip>
-                  </template>
-                </v-tooltip>
-              </v-chip-group>
-            </v-card-item>
-            <v-card-item align="center">
-              <span class="text-h1 text-primary font-weight-bold">
-                {{ temperature.avg }}
-              </span>
-            </v-card-item>
-          </v-card>
-        </v-col>
-        <v-col cols="3" align="center">
-          <v-card title="Humidity" width="250" variant="outlined" color="primary" density="compact" rounded="lg"
-          >
-            <v-card-item class="mb-n5">
-              <v-chip-group class="d-flex flex-row justify-center" color="primaryContainer" variant="flat"
-              >
-                <v-tooltip text="Min" location="start">
-                  <template v-slot:activator="{ props }">
-                    <v-chip v-bind="props">{{ humidity.min }}</v-chip>
-                  </template>
-                </v-tooltip>
-  
-                <v-tooltip text="Range" location="top">
-                  <template v-slot:activator="{ props }">
-                    <v-chip v-bind="props">{{ humidity.range }}</v-chip>
-                  </template>
-                </v-tooltip>
-                <v-tooltip text="Max" location="end">
-                  <template v-slot:activator="{ props }">
-                    <v-chip v-bind="props">{{ humidity.max }}</v-chip>
-                  </template>
-                </v-tooltip>
-              </v-chip-group>
-            </v-card-item>
-            <v-card-item align="center">
-              <span class="text-h1 text-primary font-weight-bold">
-                {{ humidity.avg }}
-              </span>
-            </v-card-item>
-          </v-card>
-        </v-col>
-      </v-row>
-      <v-row class="row">
-        <v-col cols="12">
-          <figure class="highcharts-figure">
-            <div id="container"></div>
-          </figure>
-        </v-col>
-        <v-col cols="12">
-          <figure class="highcharts-figure">
-            <div id="container0"></div>
-          </figure>
-        </v-col>
-      </v-row>
-      <v-row class="row">
-        <v-col class="col1" cols="12">
-          <figure class="highcharts-figure">
-            <div id="container1"></div>
-          </figure>
-        </v-col>
-        <v-col cols="12">
-          <figure class="highcharts-figure">
-            <div id="container2"></div>
-          </figure>
-        </v-col>
-        <v-col cols="12">
-          <figure class="highcharts-figure">
-            <div id="container3"></div>
-          </figure>
-        </v-col>
-      </v-row>
+  <template>
+      <v-container fluid align=" center" color=" surface" class="vg-surface" >
+        <v-row class="row1" max-width="1200px" justify="center" align="center" padding="1">
+            <v-col class="col col1" >
+                <v-sheet class="pa-2" height="250">
+                    <p>Enter date range for Analysis</p>
+                    <v-divider></v-divider>
+                    <v-text-field label="Start date" type="Date" density="compact" solo-inverted class="mr-5" max-width="300px" flat v-model="start"></v-text-field>
+                    <v-text-field label="End date" type="Date" density="compact" solo-inverted class="mr-5" max-width="300px" flat v-model="end"></v-text-field>
+                    
+                    <v-spacer></v-spacer>
+                    <VBtn @click="updateLineCharts(); updateCards(); updateHistogramCharts();updateScatter(); " text="Analyze" color="primary" tonal></VBtn>
+                    </v-sheet> 
+            </v-col>
+
+            <v-col class="col col2" cols="3" align="center"> 
+                <v-card title="Temperature" width="250" outlines color="primary" density="compact" rounded="lg" border>
+                    <v-card-item class="mb-n5">
+                        <v-chip-group class="d-flex flex-row justify-center" color="primaryContainer" flat>
+                            <v-tooltip text="Min" location="start">
+                                <template v-slot:activator="{props}">
+                                    <v-chip v-bind="props">{{ temperature.min }}</v-chip>
+                                </template>             
+                            </v-tooltip>
+                            <v-tooltip text="Range" location="top">
+                                <template v-slot:activator="{props}">
+                                    <v-chip v-bind="props">{{ temperature.range }}</v-chip>
+                                </template>     
+                            </v-tooltip>
+                            <v-tooltip text="Max" location="end">
+                                <template v-slot:activator="{props}">
+                                    <v-chip v-bind="props">{{ temperature.max }}</v-chip>
+                                </template>     
+                            </v-tooltip>
+                        </v-chip-group>
+                    </v-card-item>
+                    <v-card-item align="center">
+                        <span class="text-h1 text-primary font-weight-bold">
+                            {{ temperature.avg }}
+                        </span>
+                    </v-card-item>
+                </v-card>
+            </v-col>
+
+        <v-col class="col col3" cols="3" align="center"> 
+                        <v-card title="Humidity" width="250" outlines color="primary" density="compact" rounded="lg" border>
+                            <v-card-item class="mb-n5">
+                                <v-chip-group class="d-flex flex-row justify-center" color="primaryContainer" flat>
+                                    <v-tooltip text="Min" location="start">
+                                        <template v-slot:activator="{props}">
+                                            <v-chip v-bind="props">{{ humidity.min }}</v-chip>
+                                        </template>             
+                                    </v-tooltip>
+                                    <v-tooltip text="Range" location="top">
+                                        <template v-slot:activator="{props}">
+                                            <v-chip v-bind="props">{{ humidity.range }}</v-chip>
+                                        </template>     
+                                    </v-tooltip>
+                                    <v-tooltip text="Max" location="end">
+                                        <template v-slot:activator="{props}">
+                                            <v-chip v-bind="props">{{ humidity.max }}</v-chip>
+                                        </template>     
+                                    </v-tooltip>
+                                </v-chip-group>
+                            </v-card-item>
+                            <v-card-item align="center">
+                                <span class="text-h1 text-primary font-weight-bold">
+                                    {{ humidity.avg }}
+                                </span>
+                            </v-card-item>
+                        </v-card>
+                    </v-col>
+        </v-row>
+
+        <v-row max-width="1200px" justify="start" align="center">
+            <v-col class="col col1" cols="12" align = 'center'>
+                <figure class="highcharts-figure">
+                    <div id="container"></div>
+                </figure>
+            </v-col>
+
+            <v-col class="col col2" cols="12" align="center">
+                <figure class="highcharts-figure">
+                    <div id="container0"></div>
+                </figure>
+            </v-col>
+        </v-row>
+
+        <v-row max-width="1200px" justify="start" align="center">
+            <v-col class="col col1" cols="12" align="center" style="border-right: 2px solid black;">
+                <figure class="highcharts-figure">
+                    <div id="container1"></div>
+                </figure>
+            </v-col>
+
+            <v-col class="col col2" cols="12" align="center">
+                <figure class="highcharts-figure">
+                    <div id="container2"></div>
+                </figure>
+            </v-col>
+
+            <v-col class="col col3" cols="12" align="center">
+                <figure class="highcharts-figure">
+                    <div id="container3"></div>
+                </figure>
+            </v-col>
+        </v-row>
     </v-container>
-  </template>
+</template>
+
   
   <script setup>
   /** JAVASCRIPT HERE */
@@ -396,17 +368,9 @@
       // Iterate through data variable and transform object to format recognized by highcharts
       data.forEach((row) => {
         temperature.push({
-          x: row.timestamp * 1000,
-          y: parseFloat(row.temperature.toFixed(2)),
-        });
-        heatindex.push({
-          x: row.timestamp * 1000,
-          y: parseFloat(row.heatindex.toFixed(2)),
-        });
-        humidity.push({
-          x: row.timestamp * 1000,
-          y: parseFloat(row.humidity.toFixed(2)),
-        });
+          x: row.timestamp * 1000,y: parseFloat(row.temperature.toFixed(2)),});
+        heatindex.push({x: row.timestamp * 1000,y: parseFloat(row.heatindex.toFixed(2)), });
+        humidity.push({x: row.timestamp * 1000,y: parseFloat(row.humidity.toFixed(2)), });
       });
       // Add data to Temperature and Heat Index chart
       tempHiLine.value.series[0].setData(temperature);
