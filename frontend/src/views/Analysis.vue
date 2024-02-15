@@ -1,21 +1,14 @@
 <template>
-    <v-container class="container" fluid>
-      <v-row class="row1">
+    <v-container class="vg-surface" fluid align=" center" color=" surface">
+      <v-row class="">
         <v-col>
-          <v-sheet class="sheet">
+          <v-sheet class="pa-2">
             <p>Enter date range for Analysis</p>
           </v-sheet>
           <v-divider></v-divider>
           <br />
           <v-text-field
-            v-model="start"
-            label="Start date"
-            type="Date"
-            dense
-            solo-inverted
-            class="mr-5"
-            :style="{ maxWidth: '300px' }"
-            flat
+          label="Start date" type="Date"  solo-inverted class="mr-5" max-width="300px" flat v-model="start"
           ></v-text-field>
           <v-text-field
             v-model="end"
@@ -278,21 +271,21 @@
       series: [
         {
           name: "Temperature",
-          type: "bar",
+          type: "column",
           data: [],
           turboThreshold: 0,
           color: Highcharts.getOptions().colors[0],
         },
         {
           name: "Humidity",
-          type: "bar",
+          type: "column",
           data: [],
           turboThreshold: 0,
           color: Highcharts.getOptions().colors[1],
         },
         {
           name: "Heat Index",
-          type: "bar",
+          type: "column",
           data: [],
           turboThreshold: 0,
           color: Highcharts.getOptions().colors[3],
